@@ -24,8 +24,8 @@ Most trending lists show you what is *already* popular. **TrendPulse** uses a cu
 ## 🚦 Quick Start
 1.  **Clone the Repo:**
     ```bash
-    git clone https://github.com/shivank/trendpulse.git
-    cd trendpulse
+    git clone https://github.com/Shivankneelamgarg/GithubTrendpulse.git
+    cd GithubTrendpulse
     ```
 2.  **Open `index.html`** in your browser.
 3.  **Enter your GitHub Token** in the Settings modal (stored locally).

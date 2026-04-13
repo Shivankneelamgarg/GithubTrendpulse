@@ -192,6 +192,12 @@ body.bloomberg-theme {
     color: var(--bg-color);
 }
 
+.terminal-btn.success {
+    background: #008000 !important;
+    border-color: #00FF00 !important;
+    color: #fff !important;
+}
+
 /* Modal */
 .modal {
     position: fixed;

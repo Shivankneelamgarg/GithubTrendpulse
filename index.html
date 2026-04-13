@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendPulse | Zero-Day GitHub Radar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body class="bloomberg-theme">
+    <div class="scanlines"></div>
+    
+    <header class="terminal-header">
+        <div class="header-left">
+            <span class="logo">TRENDPULSE // RADAR</span>
+            <span class="version">v1.0.4-LATEST</span>
+        </div>
+        <div class="header-right">
+            <span class="data-stream">SYNC: <span id="sync-status">LIVE</span></span>
+            <span class="timer" id="current-time">00:00:00 UTC</span>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- Sidebar: High Velocity Signals -->
+        <aside class="sidebar">
+            <div class="panel-header">BREAKING_SIGNALS</div>
+            <div id="signals-list" class="signals-container">
+                <div class="signal-item placeholder">AWAITING_DATA...</div>
+            </div>
+        </aside>
+
+        <!-- Main Radar Feed -->
+        <section class="radar-feed">
+            <div class="panel-header">
+                <span class="active-category" id="current-feed-label">GLOBAL_ACCELERATION_FEED</span>
+                <div class="radar-controls" style="display: flex; gap: 10px;">
+                    <select id="lang-filter" class="terminal-btn">
+                        <option value="">LANG: ALL</option>
+                        <option value="javascript">JAVASCRIPT</option>
+                        <option value="python">PYTHON</option>
+                        <option value="rust">RUST</option>
+                        <option value="go">GO</option>
+                    </select>
+                    <select id="topic-filter" class="terminal-btn">
+                        <option value="">TOPIC: ALL</option>
+                        <option value="ai">AI / LLM</option>
+                        <option value="agent">AGENTS</option>
+                        <option value="finance">FINANCE</option>
+                        <option value="automation">AUTOMATION</option>
+                        <option value="ui">UI / UX</option>
+                    </select>
+                    <button id="settings-btn" class="terminal-btn">SETTINGS</button>
+                </div>
+            </div>
+            <div class="feed-container">
+                <table class="velocity-table">
+                    <thead>
+                        <tr>
+                            <th>RANK</th>
+                            <th>REPOSITORY</th>
+                            <th>STARS</th>
+                            <th>VELOCITY (S/HR)</th>
+                            <th>PULSE_SCORE</th>
+                            <th>TRAJECTORY</th>
+                        </tr>
+                    </thead>
+                    <tbody id="radar-body">
+                        <!-- Rows injected by app.js -->
+                        <tr>
+                            <td colspan="6" class="loading-state">INITIALIZING_VELOCITY_ENGINE...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3>TERMINAL_CONFIG</h3>
+            <div class="input-group">
+                <label for="gh-token">GITHUB_PERSONAL_ACCESS_TOKEN</label>
+                <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx">
+                <small>Required for 5,000 req/hr limit. Token stays in your localStorage.</small>
+            </div>
+            <div class="modal-actions">
+                <button id="save-settings" class="terminal-btn primary">APPLY_CHANGES</button>
+                <button id="close-modal" class="terminal-btn">CLOSE</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="terminal-footer">
+        <div class="status-bar">
+            <span>LIMIT: <span id="rate-limit">5000/5000</span></span>
+            <span>ENGINE: <span id="engine-status">IDLE</span></span>
+        </div>
+        <div class="footer-note">
+            CREATED_BY_SHIVANK_STUDIOS // OPTIMIZED_FOR_2026
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

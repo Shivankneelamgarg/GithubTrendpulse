@@ -67,14 +67,17 @@ async function runRadar() {
         const total = response.headers.get('x-ratelimit-limit');
         if (limit) els.rateLimit.textContent = `${limit}/${total}`;
 
-        if (!response.ok) throw new Error(`GH_API_ERROR: ${response.status}`);
+        if (!response.ok) {
+            if (response.status === 401) throw new Error('INVALID_TOKEN');
+            throw new Error(`GH_API_ERROR: ${response.status}`);
+        }
 
         const data = await response.json();
         processRepos(data.items);
         
     } catch (error) {
         console.error(error);
-        updateEngineStatus('ERROR');
+        updateEngineStatus(`ERROR: ${error.message}`);
     } finally {
         STATE.isFetching = false;
         setTimeout(() => updateEngineStatus('IDLE'), 2000);
@@ -149,8 +152,15 @@ function setupEventListeners() {
         if (token) {
             localStorage.setItem('tp_gh_token', token);
             STATE.token = token;
-            hideModal();
-            runRadar();
+            els.saveSettings.textContent = 'APPLIED_SUCCESSFULLY';
+            els.saveSettings.classList.add('success');
+            
+            setTimeout(() => {
+                els.saveSettings.textContent = 'APPLY_CHANGES';
+                els.saveSettings.classList.remove('success');
+                hideModal();
+                runRadar();
+            }, 1000);
         }
     };
     els.langFilter.onchange = (e) => {
@@ -178,7 +188,10 @@ function updateEngineStatus(status) {
     els.engineStatus.textContent = status;
 }
 
-function showModal() { els.settingsModal.classList.remove('hidden'); }
+function showModal() { 
+    els.ghTokenInput.value = STATE.token;
+    els.settingsModal.classList.remove('hidden'); 
+}
 function hideModal() { els.settingsModal.classList.add('hidden'); }
 
 // Run

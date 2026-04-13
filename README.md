@@ -19,7 +19,7 @@ Most trending lists show you what is *already* popular. **TrendPulse** uses a cu
 -   **Local-First:** Runs entirely in your browser using your own GitHub PAT (5,000 req/hr limit).
 
 ## 🖥️ Preview
-*(Placeholder for stunning terminal-style screenshot)*
+![TrendPulse Dashboard](preview.png)
 
 ## 🚦 Quick Start
 1.  **Clone the Repo:**
